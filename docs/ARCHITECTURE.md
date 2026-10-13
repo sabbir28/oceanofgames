@@ -84,25 +84,27 @@ When `method == 2`, the embedded 7z archive is intentionally obfuscated to preve
 Standard 7-Zip archives begin with the magic bytes:
 `37 7A BC AF 27 1C` (`'7' 'z' 0xBC 0xAF 0x27 0x1C`)
 
-The obfuscated archive stores the bitwise inverted (`XOR 0xFF`) representation of the first 32 bytes:
+The obfuscated archive stores the bitwise inverted (`XOR 0xFF`) representation of the first **512 bytes (`0x200`)**:
 ```
 Original:    37 7A BC AF 27 1C ...
 Inverted:    C8 85 43 50 D8 E3 ...
 ```
 
-### De-obfuscation Routine
+### De-obfuscation Routine (Ghidra `FUN_0053aa50`)
 
-To restore a valid 7z archive:
+Reverse engineering of the stream filter object (`FUN_0053aa50` at offset `0x00518e2c`) established that the obfuscation is exactly `0x200` (512) bytes long. Inverting only 32 bytes causes LZMA2 decompression failures ("Data Error"). Inverting the entire 512-byte block restores the archive completely:
+
 1. Check if bytes `[0..5]` match `C8 85 43 50 D8 E3`.
-2. Apply `byte ^= 0xFF` to the first 32 bytes of the stream.
+2. Apply `byte ^= 0xFF` to the first **512 bytes** of the stream.
 3. Stream the remaining bytes un-inverted.
 
 ```c
 if (isInverted7z && isFirstBlock) {
-    size_t bytesToInvert = (bytesRead < 32) ? bytesRead : 32;
+    size_t bytesToInvert = (bytesRead < 512) ? bytesRead : 512;
     for (size_t i = 0; i < bytesToInvert; i++) {
-        buffer[i] ^= 0xFF; // Restore valid 7z signature
+        buffer[i] ^= 0xFF; // Restore valid 7z header & compressed stream block
     }
+    isFirstBlock = 0;
 }
 ```
 

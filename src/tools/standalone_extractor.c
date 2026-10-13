@@ -124,9 +124,9 @@ static int ExtractEntry(FILE *fIn, DWORD offset, DWORD size, DWORD method, const
         if (bytesRead == 0) break;
 
         if (isInverted7z && isFirstBlock) {
-            size_t bytesToInvert = (bytesRead < 32) ? bytesRead : 32;
+            size_t bytesToInvert = (bytesRead < 512) ? bytesRead : 512;
             for (size_t i = 0; i < bytesToInvert; i++) {
-                buffer[i] ^= 0xFF; // Invert to restore valid '7z\xBC\xAF\x27\x1C' header
+                buffer[i] ^= 0xFF; // Invert first 512 bytes (0x200) to restore clean 7z stream
             }
             isFirstBlock = 0;
         }

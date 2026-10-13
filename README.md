@@ -41,6 +41,7 @@ decoder/
 │   │   └── decoder.def            # Module definition file for exact export ABI
 │   └── tools/                     # Command-line tools
 │       ├── CMakeLists.txt
+│       ├── safe_extractor.py      # Defensive Python tool (container + nested 7z unpacker)
 │       ├── standalone_extractor.c # Self-contained ADVINSTSFX container extractor
 │       └── gof_extractor.c        # Enhanced extractor driving decoder.dll with extensive telemetry
 │
@@ -59,14 +60,16 @@ decoder/
 │
 ├── samples/                       # Reference payloads and extracted sample data
 │   ├── README.md
-│   └── payloads/
-│       ├── original_installer_decoder.dll
-│       ├── Step 3 - Setup_Install_Game.ini
-│       └── 326FA02/               # Extracted clean payload archives
+│   ├── payloads/                  # Extracted raw payload archives
+│   └── safe_extracted_all/        # Fully extracted and unpacked malware payloads
 │
 └── docs/                          # In-depth architectural & API documentation
+    ├── DECODER_CALL_ANALYSIS.md   # Reverse engineering report: when & why decoder.dll is called
+    ├── DECODER_CALL_ANALYSIS_BN.md# রিভার্স ইঞ্জিনিয়ারিং রিপোর্ট: কখন ও কেন decoder.dll কল করা হয়
     ├── ARCHITECTURE.md            # Deep dive into container layout and XOR inversion
-    └── API.md                     # Comprehensive C API documentation and examples
+    ├── API.md                     # Comprehensive C API documentation and examples
+    ├── README.md                  # Complete English documentation index
+    └── README_BN.md               # বাংলা ম্যালওয়্যার বিশ্লেষণ ও টেকনিক্যাল রিপোর্ট
 ```
 
 ---
@@ -176,10 +179,12 @@ cmake --build build/x86 --config Release
 
 ## Documentation
 
+- **[Reverse Engineering: When & Why Decoder.dll is Called](docs/DECODER_CALL_ANALYSIS.md)**: Ghidra MCP analysis on execution chronology, EDR evasion, and 512-byte stream inversion.
+- **[রিভার্স ইঞ্জিনিয়ারিং: কখন ও কেন Decoder.dll কল করা হয় (বাংলা)](docs/DECODER_CALL_ANALYSIS_BN.md)**: Ghidra অ্যানালাইসিস, এক্সিকিউশন টাইমলাইন এবং ম্যালওয়্যার উপাদান বিশ্লেষণ।
 - **[Architecture Deep Dive](docs/ARCHITECTURE.md)**: Container layout, trailer specification, and XOR obfuscation mechanics.
 - **[API Reference](docs/API.md)**: Function signatures, return codes, and context structures.
 - **[Sample Payloads Guide](samples/README.md)**: Information about reference assets and reverse-engineering artifacts.
-- **[বাংলা সংস্করণ (Bengali Report)](docs/README_BN.md)**: ম্যালওয়্যার ফরেনসিক্স এবং রিভার্স ইঞ্জিনিয়ারিং বিশ্লেষণ প্রতিবেদন।
+- **[বাংলা সংস্করণ (Bengali Forensic Report)](docs/README_BN.md)**: ম্যালওয়্যার ফরেনসিক্স এবং রিভার্স ইঞ্জিনিয়ারিং বিশ্লেষণ প্রতিবেদন।
 
 ---
 

@@ -31,6 +31,12 @@ test_output/
 scratch/
 *.tmp
 *.bak
+Extracted_Payloads/
+samples/safe_extracted_all/
+samples/verified_files_out/
+samples/verified_out/
+samples/extracted_clean/
+samples/clean_out/
 
 # Ignore locally compiled executables and libraries in root
 /*.exe

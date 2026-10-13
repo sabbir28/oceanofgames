@@ -173,10 +173,10 @@ public:
             return HRESULT_FROM_WIN32(GetLastError());
         }
 
-        // Bitwise un-invert 7z signature header if obfuscated
-        if (m_isInverted7z && m_curPos < 32 && bytesRead > 0) {
+        // Bitwise un-invert obfuscated block (first 512 bytes / 0x200 bytes as decoded by FUN_0053aa50)
+        if (m_isInverted7z && m_curPos < 512 && bytesRead > 0) {
             BYTE *p = (BYTE*)data;
-            for (DWORD i = 0; i < bytesRead && (m_curPos + i) < 32; i++) {
+            for (DWORD i = 0; i < bytesRead && (m_curPos + i) < 512; i++) {
                 p[i] ^= 0xFF;
             }
         }

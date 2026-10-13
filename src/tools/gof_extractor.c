@@ -275,7 +275,7 @@ static int ExtractEntry(FILE *fIn, DWORD offset, DWORD size, DWORD method, const
             isInverted7z = 1;
             *outIsInverted7z = 1;
             LOG_INFO("Detected obfuscated inverted 7z header (0xC8 0x85 0x43 0x50 0xD8 0xE3)");
-            LOG_INFO("Initiating real-time bitwise XOR 0xFF un-inversion on first 32 bytes...");
+            LOG_INFO("Initiating real-time bitwise XOR 0xFF un-inversion on first 512 bytes (Ghidra FUN_0053aa50)...");
         } else if (header[0] == 0x37 && header[1] == 0x7A &&
                    header[2] == 0xBC && header[3] == 0xAF &&
                    header[4] == 0x27 && header[5] == 0x1C) {
@@ -299,11 +299,11 @@ static int ExtractEntry(FILE *fIn, DWORD offset, DWORD size, DWORD method, const
         }
 
         if (isInverted7z && isFirstBlock) {
-            size_t bytesToInvert = (bytesRead < 32) ? bytesRead : 32;
+            size_t bytesToInvert = (bytesRead < 512) ? bytesRead : 512;
             for (size_t b = 0; b < bytesToInvert; b++) {
                 buffer[b] ^= 0xFF;
             }
-            LOG_DEBUG("Successfully inverted %zu signature bytes back to valid 7z header", bytesToInvert);
+            LOG_DEBUG("Successfully inverted %zu signature bytes back to valid 7z stream", bytesToInvert);
             LOG_TRACE("Restored header bytes [0..5]: %c%c \\x%02X \\x%02X \\x%02X \\x%02X",
                       buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5]);
             isFirstBlock = 0;
