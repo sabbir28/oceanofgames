@@ -179,6 +179,8 @@ cmake --build build/x86 --config Release
 
 ## Documentation
 
+- **[Forensic Analysis: Infection & Game Delivery Chain](docs/MALWARE_CHAIN_ANALYSIS.md)**: Full breakdown of the bait-and-switch attack, VBScript renamer, and Setup Factory extraction.
+- **[ইনফেকশন ও আসল গেম ডেলিভারি চেইন বিশ্লেষণ (বাংলা)](docs/MALWARE_CHAIN_ANALYSIS_BN.md)**: কীভাবে ম্যালওয়্যার ঢুকিয়ে আসল গেম চালু করা হয় তার পূর্ণাঙ্গ বিশ্লেষণ।
 - **[Reverse Engineering: When & Why Decoder.dll is Called](docs/DECODER_CALL_ANALYSIS.md)**: Ghidra MCP analysis on execution chronology, EDR evasion, and 512-byte stream inversion.
 - **[রিভার্স ইঞ্জিনিয়ারিং: কখন ও কেন Decoder.dll কল করা হয় (বাংলা)](docs/DECODER_CALL_ANALYSIS_BN.md)**: Ghidra অ্যানালাইসিস, এক্সিকিউশন টাইমলাইন এবং ম্যালওয়্যার উপাদান বিশ্লেষণ।
 - **[Architecture Deep Dive](docs/ARCHITECTURE.md)**: Container layout, trailer specification, and XOR obfuscation mechanics.

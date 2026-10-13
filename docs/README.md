@@ -28,6 +28,8 @@ This repository hosts the reverse engineering documentation, clean-room C/C++ re
 
 ## 2. Documentation Index
 
+- [**Forensic Analysis: Infection & Game Delivery Chain (English)**](file:///F:/Project/skill/decoder/docs/MALWARE_CHAIN_ANALYSIS.md)
+- [**ইনফেকশন ও আসল গেম ডেলিভারি চেইন বিশ্লেষণ (বাংলা)**](file:///F:/Project/skill/decoder/docs/MALWARE_CHAIN_ANALYSIS_BN.md)
 - [**When, Why, and How Decoder.dll is Invoked (English)**](file:///F:/Project/skill/decoder/docs/DECODER_CALL_ANALYSIS.md)
 - [**কখন, কেন এবং কীভাবে Decoder.dll কল করা হয় (বাংলা)**](file:///F:/Project/skill/decoder/docs/DECODER_CALL_ANALYSIS_BN.md)
 - [**Container Architecture & XOR Inversion Deep Dive**](file:///F:/Project/skill/decoder/docs/ARCHITECTURE.md)
