@@ -64,6 +64,8 @@ decoder/
 │   └── safe_extracted_all/        # Fully extracted and unpacked malware payloads
 │
 └── docs/                          # In-depth architectural & API documentation
+    ├── DATA_XE_BIN_FORENSIC_ANALYSIS.md   # Forensic report: Data_xe.bin & Multi-installer architecture
+    ├── DATA_XE_BIN_FORENSIC_ANALYSIS_BN.md# Data_xe.bin ও মাল্টি-ইনস্টলার গেম আর্কিটেকচার বিশ্লেষণ
     ├── DECODER_CALL_ANALYSIS.md   # Reverse engineering report: when & why decoder.dll is called
     ├── DECODER_CALL_ANALYSIS_BN.md# রিভার্স ইঞ্জিনিয়ারিং রিপোর্ট: কখন ও কেন decoder.dll কল করা হয়
     ├── ARCHITECTURE.md            # Deep dive into container layout and XOR inversion

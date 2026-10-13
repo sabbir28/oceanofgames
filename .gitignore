@@ -37,6 +37,8 @@ samples/verified_files_out/
 samples/verified_out/
 samples/extracted_clean/
 samples/clean_out/
+samples/*_out/
+samples/closure_*/
 
 # Python packaging outputs
 dist/

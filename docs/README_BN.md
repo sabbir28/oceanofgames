@@ -1,6 +1,6 @@
 # ম্যালওয়্যার ফরেনসিক্স এবং রিভার্স ইঞ্জিনিয়ারিং রিপোর্ট: Decoder.dll ও SFX ড্রপার বিশ্লেষণ
 
-[**[English Version / ইংরেজি সংস্করণ]**](../README.md) | [**[কল অ্যানালাইসিস রিপোর্ট (বাংলা)]**](file:///F:/Project/skill/decoder/docs/DECODER_CALL_ANALYSIS_BN.md) | [**[Call Analysis Report (English)]**](file:///F:/Project/skill/decoder/docs/DECODER_CALL_ANALYSIS.md)
+[**[English Version / ইংরেজি সংস্করণ]**](../README.md) | [**[Data_xe.bin ও মাল্টি-ইনস্টলার বিশ্লেষণ (বাংলা)]**](file:///F:/Project/skill/decoder/docs/DATA_XE_BIN_FORENSIC_ANALYSIS_BN.md) | [**[কল অ্যানালাইসিস রিপোর্ট (বাংলা)]**](file:///F:/Project/skill/decoder/docs/DECODER_CALL_ANALYSIS_BN.md) | [**[Call Analysis Report (English)]**](file:///F:/Project/skill/decoder/docs/DECODER_CALL_ANALYSIS.md)
 
 ---
 

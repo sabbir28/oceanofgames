@@ -28,6 +28,8 @@ This repository hosts the reverse engineering documentation, clean-room C/C++ re
 
 ## 2. Documentation Index
 
+- [**Forensic Analysis: Data_xe.bin & Multi-Installer Architectures (English)**](file:///F:/Project/skill/decoder/docs/DATA_XE_BIN_FORENSIC_ANALYSIS.md)
+- [**Data_xe.bin ও মাল্টি-ইনস্টলার গেম আর্কিটেকচার বিশ্লেষণ (বাংলা)**](file:///F:/Project/skill/decoder/docs/DATA_XE_BIN_FORENSIC_ANALYSIS_BN.md)
 - [**Forensic Analysis: Infection & Game Delivery Chain (English)**](file:///F:/Project/skill/decoder/docs/MALWARE_CHAIN_ANALYSIS.md)
 - [**ইনফেকশন ও আসল গেম ডেলিভারি চেইন বিশ্লেষণ (বাংলা)**](file:///F:/Project/skill/decoder/docs/MALWARE_CHAIN_ANALYSIS_BN.md)
 - [**When, Why, and How Decoder.dll is Invoked (English)**](file:///F:/Project/skill/decoder/docs/DECODER_CALL_ANALYSIS.md)
