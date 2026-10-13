@@ -41,7 +41,8 @@ decoder/
 │   │   └── decoder.def            # Module definition file for exact export ABI
 │   └── tools/                     # Command-line tools
 │       ├── CMakeLists.txt
-│       └── standalone_extractor.c # Self-contained ADVINSTSFX container extractor
+│       ├── standalone_extractor.c # Self-contained ADVINSTSFX container extractor
+│       └── gof_extractor.c        # Enhanced extractor driving decoder.dll with extensive telemetry
 │
 ├── tests/                         # Integration test harness
 │   ├── CMakeLists.txt
@@ -53,8 +54,8 @@ decoder/
 │   └── run_tests.bat              # Test suite verification runner
 │
 ├── bin/                           # Ready-to-use compiled binaries
-│   ├── x64/                       # 64-bit binaries (decoder.dll, standalone_extractor.exe, test_decoder.exe)
-│   └── x86/                       # 32-bit binaries (decoder.dll, standalone_extractor.exe, test_decoder.exe)
+│   ├── x64/                       # 64-bit binaries (decoder.dll, standalone_extractor.exe, gof_extractor.exe, test_decoder.exe)
+│   └── x86/                       # 32-bit binaries (decoder.dll, standalone_extractor.exe, gof_extractor.exe, test_decoder.exe)
 │
 ├── samples/                       # Reference payloads and extracted sample data
 │   ├── README.md
@@ -105,7 +106,20 @@ Output:
 [+] Finished: Successfully extracted 4 of 4 payload files into 'Extracted_Payloads'.
 ```
 
-### 2. Verifying the DLL ABI Exports
+### 2. Full Extraction & Inner Archive Unpacking with Detailed Logging (`gof_extractor`)
+
+For deep forensics analysis, real-time un-inversion telemetry, and automatic unpacking of inner `.7z` archives using `decoder.dll`:
+
+```powershell
+.\bin\x64\gof_extractor.exe "Step 3 - Setup_Install_Game.exe" -o "Extracted_Payloads" --unzip -l "extraction.log"
+```
+
+Features:
+- **Timestamped Diagnostic Telemetry**: Logs offsets, signature verification, hex bytes, and throughput speeds.
+- **Decoder DLL Integration**: Dynamically binds `decoder.dll` and drives `InitExtraction` / `ExtractAllFiles` to unpack inner archives directly into subfolders.
+- **Log Duplication**: Simultaneously logs to standard output with colored levels (`INFO`, `STEP`, `DEBUG`, `TRACE`, `SUCCESS`, `WARN`) and to an output file (`-l <log_file>`).
+
+### 3. Verifying the DLL ABI Exports
 
 Run the automated test suite to verify symbol export resolution:
 

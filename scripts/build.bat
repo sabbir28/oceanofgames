@@ -71,6 +71,16 @@ if errorlevel 1 (
 )
 echo [+] Built: %BIN_X86%\standalone_extractor.exe
 
+echo [*] Compiling x86 gof_extractor.exe...
+cl.exe /nologo /O2 /I"%INC_DIR%" ^
+    "%SRC_TOOLS%\gof_extractor.c" ^
+    /Fe:"%BIN_X86%\gof_extractor.exe" /Fo:"%OBJ_X86%\gof_extractor.obj"
+if errorlevel 1 (
+    echo [-] x86 gof_extractor.exe compilation failed!
+    exit /b 1
+)
+echo [+] Built: %BIN_X86%\gof_extractor.exe
+
 :: =====================================================================
 :: 2. Build x64 (64-bit) Targets
 :: =====================================================================
@@ -112,6 +122,16 @@ if errorlevel 1 (
     exit /b 1
 )
 echo [+] Built: %BIN_X64%\standalone_extractor.exe
+
+echo [*] Compiling x64 gof_extractor.exe...
+cl.exe /nologo /O2 /I"%INC_DIR%" ^
+    "%SRC_TOOLS%\gof_extractor.c" ^
+    /Fe:"%BIN_X64%\gof_extractor.exe" /Fo:"%OBJ_X64%\gof_extractor.obj"
+if errorlevel 1 (
+    echo [-] x64 gof_extractor.exe compilation failed!
+    exit /b 1
+)
+echo [+] Built: %BIN_X64%\gof_extractor.exe
 
 :: Optional: Copy 64-bit 7z.dll next to x64 output if available
 if exist "C:\Program Files\7-Zip\7z.dll" (
