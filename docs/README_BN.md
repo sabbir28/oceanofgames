@@ -130,9 +130,12 @@ F:\Project\skill\decoder\scripts\build.bat
 
 ### নিরাপদ এক্সট্রাকশন টুলস ব্যবহার (ম্যালওয়্যার রান না করে)
 
-১. **পাইথন টুল (`safe_extractor.py`) - সম্পূর্ণ অটোমেটিক ও রিকার্সিভ:**
+১. **পাইথন প্যাকেজ ইনস্টল ও গ্লোবাল কমান্ড (`safe-extractor`):**
 ```cmd
-python F:\Project\skill\decoder\src\tools\safe_extractor.py "ইনস্টলারের_পাথ.exe" -o "F:\Project\skill\decoder\samples\extracted_clean"
+pip install -e .
+# সরাসরি টার্মিনাল থেকে চালান:
+safe-extractor "Data_xe.bin" -o "Clean_Game"
+safe-extractor "Step 3 - Setup_Install_Game.exe" -o "Extracted_Payloads"
 ```
 
 ২. **স্ট্যান্ডঅ্যালন সি টুল (`standalone_extractor.exe`):**
@@ -152,3 +155,12 @@ F:\Project\skill\decoder\bin\x64\test_decoder.exe -d F:\Project\skill\decoder\bi
     -> ExtractAllFiles:   0x00007FFDC38C18E0
     -> EndExtraction:     0x00007FFDC38C1850
 ```
+
+---
+
+## ৬. স্বয়ংক্রিয় গিটহাব অ্যাকশন (GitHub Actions CI/CD)
+
+এই প্রজেক্টে একটি আধুনিক অটোমেশন পাইপলাইন যুক্ত করা হয়েছে (`.github/workflows/build-and-release.yml`):
+* **অটোমেটিক বাইনারি কম্পাইলেশন**: প্রতিবার কোড পুশ হলে GitHub সার্ভারে x64 এবং x86 (Win32) উভয় আর্কিটেকচারের ডিএলএল এবং এক্সিকিউটেবল স্বয়ংক্রিয়ভাবে কম্পাইল ও টেস্ট হয়।
+* **পাইথন প্যাকেজ ও হুইল তৈরি**: পাইথন প্যাকেজ (`.whl` এবং `.tar.gz`) স্বয়ংক্রিয়ভাবে বিল্ড হয়।
+* **অটো রিলিজ পাবলিশিং**: যখনই কোনো ভার্সন ট্যাগ (যেমন: `v1.0.0`) পুশ করা হয়, GitHub Action স্বয়ংক্রিয়ভাবে নতুন রিলিজ তৈরি করে সব বাইনারি জিপ এবং প্যাকেজ অ্যাটাচ করে দেয়।

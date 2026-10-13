@@ -175,7 +175,40 @@ cmake -B build/x86 -S . -A Win32 -DCMAKE_BUILD_TYPE=Release
 cmake --build build/x86 --config Release
 ```
 
+### Option C: Python Package Installation (`safe-extractor`)
+
+Install the defensive extraction suite directly via pip:
+
+```bash
+# Install dependencies & editable CLI command
+pip install -e .
+
+# Or install dependencies from requirements
+pip install -r requirements.txt
+```
+
+Usage anywhere in terminal:
+```bash
+# Extract disguised Setup Factory game data (Data_xe.bin):
+safe-extractor "Data_xe.bin" -o "Clean_Game"
+
+# Extract Advanced Installer SFX droppers:
+safe-extractor "Step 3 - Setup_Install_Game.exe" -o "Extracted_Payloads"
+
+# Scan entire download directory:
+safe-extractor "Grand_Theft_Auto_III" -o "Full_Output"
+```
+
 ---
+
+## Automated GitHub Actions CI/CD & Releases
+
+This repository includes a multi-job workflow ([`.github/workflows/build-and-release.yml`](.github/workflows/build-and-release.yml)):
+
+* **Native Matrix Builds**: Automatically compiles x64 and x86 binaries (`decoder.dll`, `standalone_extractor.exe`, `gof_extractor.exe`, `test_decoder.exe`) using MSVC on `windows-latest`.
+* **Automated CTest**: Runs symbol and ABI verification tests on every commit and pull request.
+* **Python Packaging**: Automatically builds source distributions (`.tar.gz`) and binary wheels (`.whl`) and verifies the CLI tool.
+* **Automated Release Publishing**: Tagging a commit with `v*` (e.g., `v1.0.0`) automatically publishes a GitHub Release and attaches zipped binary archives and wheels.
 
 ## Documentation
 

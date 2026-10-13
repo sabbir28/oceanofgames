@@ -38,6 +38,13 @@ samples/verified_out/
 samples/extracted_clean/
 samples/clean_out/
 
+# Python packaging outputs
+dist/
+*.egg-info/
+__pycache__/
+*.py[cod]
+output/
+
 # Ignore locally compiled executables and libraries in root
 /*.exe
 /*.dll

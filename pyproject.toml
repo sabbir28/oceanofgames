@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oceanofgames-decoder"
+version = "1.0.0"
+description = "Defensive unpacker and forensic reverse-engineering suite for Advanced Installer SFX droppers and Setup Factory archives"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [
+    { name = "sabbir28", email = "sabbirb28@gmail.com" }
+]
+keywords = [
+    "malware-analysis",
+    "forensics",
+    "reverse-engineering",
+    "sfx",
+    "7z",
+    "advanced-installer",
+    "setup-factory"
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: Microsoft :: Windows",
+    "Topic :: Security",
+    "License :: OSI Approved :: MIT License"
+]
+dependencies = [
+    "py7zr>=0.20.0",
+    "pefile>=2023.2.7",
+    "sfextract>=0.0.8"
+]
+
+[project.scripts]
+safe-extractor = "safe_extractor:main"
+
+[tool.setuptools]
+py-modules = ["safe_extractor"]
+
+[tool.setuptools.package-dir]
+"" = "src/tools"

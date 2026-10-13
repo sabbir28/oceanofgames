@@ -31,3 +31,20 @@ if(BUILD_TESTING)
     enable_testing()
     add_subdirectory(tests)
 endif()
+
+# Installation & Packaging Rules
+install(TARGETS decoder standalone_extractor gof_extractor
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION bin
+    ARCHIVE DESTINATION lib
+)
+
+install(DIRECTORY include/ DESTINATION include)
+
+# CPack packaging configuration
+set(CPACK_PACKAGE_NAME "oceanofgames-decoder")
+set(CPACK_PACKAGE_VENDOR "sabbir28")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Reverse-engineered ABI decoder library and safe extraction toolchain")
+set(CPACK_PACKAGE_VERSION "1.0.0")
+set(CPACK_GENERATOR "ZIP")
+include(CPack)
