@@ -1,0 +1,37 @@
+# Visual Studio / MSVC build outputs
+*.obj
+*.ilk
+*.pdb
+*.idb
+*.exp
+*.lib
+*.log
+*.tlog
+
+# CMake build directories
+build/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+*.cmake
+install_manifest.txt
+
+# IDE / Editor directories
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+.vscode/
+.idea/
+
+# Testing & Scratch outputs
+test_output/
+scratch/
+*.tmp
+*.bak
+
+# Ignore locally compiled executables and libraries in root
+/*.exe
+/*.dll

@@ -1,0 +1,6 @@
+LIBRARY decoder
+EXPORTS
+    InitExtraction
+    GetTotalFilesSize
+    ExtractAllFiles
+    EndExtraction
